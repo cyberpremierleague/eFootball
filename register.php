@@ -10,7 +10,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     echo "<p>Registration successful!</p>";
 }
 ?>
-
+ 
 <!DOCTYPE html>
 <html lang="en">
 <head>
