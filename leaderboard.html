@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leaderboard | eFootball 2024</title>
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            let users = JSON.parse(localStorage.getItem('users')) || [];
+            let leaderboard = document.getElementById('leaderboard');
+            users.forEach(function(user) {
+                let listItem = document.createElement('li');
+                listItem.textContent = user.username;
+                leaderboard.appendChild(listItem);
+            });
+        });
+    </script>
+</head>
+<body>
+    <header>
+        <h1>Leaderboard</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="tournaments.html">Tournaments</a></li>
+                <li><a href="leaderboard.html">Leaderboard</a></li>
+                <li><a href="register.html">Register</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section>
+        <h2>Top Registered Users</h2>
+        <ol id="leaderboard">
+            <!-- Usernames will be injected here by JavaScript -->
+        </ol>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 eFootball Tournaments. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>
