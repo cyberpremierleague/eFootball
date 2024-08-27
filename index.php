@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>eFootball 2024 Tournaments</title>
     <link rel="stylesheet" href="styles.css">
-</head>
+</head> 
 <body>
     <header>
         <h1>eFootball 2024 Tournaments</h1>
