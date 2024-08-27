@@ -1,16 +1,3 @@
-<?php
-session_start();
-
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $_SESSION['users'][] = [
-        'username' => $_POST['username'],
-        'email' => $_POST['email'],
-        'password' => password_hash($_POST['password'], PASSWORD_DEFAULT),
-    ];
-    echo "<p>Registration successful!</p>";
-}
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,13 +8,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             document.querySelector('form').addEventListener('submit', function(event) {
+                event.preventDefault();
                 let username = document.getElementById('username').value;
                 let email = document.getElementById('email').value;
                 let password = document.getElementById('password').value;
 
                 if (username === "" || email === "" || password === "") {
                     alert("All fields are required!");
-                    event.preventDefault();
+                } else {
+                    let users = JSON.parse(localStorage.getItem('users')) || [];
+                    users.push({username, email, password});
+                    localStorage.setItem('users', JSON.stringify(users));
+                    alert("Registration successful!");
+                    event.target.reset();
                 }
             });
         });
@@ -38,16 +31,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <h1>Register</h1>
         <nav>
             <ul>
-                <li><a href="index.php">Home</a></li>
-                <li><a href="tournaments.php">Tournaments</a></li>
-                <li><a href="leaderboard.php">Leaderboard</a></li>
-                <li><a href="register.php">Register</a></li>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="tournaments.html">Tournaments</a></li>
+                <li><a href="leaderboard.html">Leaderboard</a></li>
+                <li><a href="register.html">Register</a></li>
             </ul>
         </nav>
     </header>
 
     <section>
-        <form action="register.php" method="POST">
+        <form>
             <label for="username">Username:</label>
             <input type="text" id="username" name="username" required>
 
